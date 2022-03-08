@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.io.File;
-public class HM {
+public class Horspool {
 	//commandline commands:
 	//Change file from command line: --file <filename>
 	//Test; show characters and index: --t
