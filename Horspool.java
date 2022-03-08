@@ -20,7 +20,8 @@ public class Horspool {
 	public static File file;
 	public static void main(String[] args) throws IOException{
 		if (args.length == 0) {
-			System.out.println("Usage => java HM [--file <filename>] [--t] [--table]\n\tHM.java: error: the following arguments are required: --file <filename>\n\tTry using the testing .txt files or using '--h' for help");
+			System.out.println("Usage => java HM [--f <FILEPATH>] [--t] [--table]\n\tHM.java: error: the following arguments are required: --file <FILEPATH>\n\tTry using the testing .txt files or using '--h' for help");
+			System.exit(0);
 		}
 		String sen = "", hold = "";
 		boolean test = false, tab = false;
@@ -34,11 +35,11 @@ public class Horspool {
 			for(int i = args.length-1; i >= 0; i--){
 				if(args[i].equals("--h")){
 					System.out.println("");
-					System.exit();
+					System.exit(0);
 				}
 				if(args[i].equals("--t"))
 					test = true;
-				if(args[i].equals("--file")){
+				if(args[i].equals("--f")){
 					if(i+1 < args.length){
 						try{
 							file = new File(args[i+1]);
@@ -46,18 +47,28 @@ public class Horspool {
 							System.err.println("File not found.");
 							System.exit(0);
 						}
-					} 
+					} else {
+						System.out.println("Usage => java HM [--f <FILEPATH>] [--t] [--table]\n\tHM.java: error: the following arguments are required: --file <FILEPATH>\n\tTry using the testing .txt files or using '--h' for help");
+						System.exit(0);
+					}
 				}
 				if(args[i].equals("--table"))
 					tab = true;
 			}
 		}
+
+
+
 		Scanner input = new Scanner(file);
+		/*
 		if(args.length > 0 && !(args[0].equals("--t")) && !(args[0].equals("--file")) && !(args[0].equals("--table"))){
 			str = args[0];
 		} else{
 			str = input.next();
 		}
+		*/
+		System.out.print("Desired string to be searched\n  >> ");
+		str = (new Scanner(System.in)).next();
 		sen = input.next();
 		while(input.hasNext()){
 			hold = input.nextLine();
