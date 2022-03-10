@@ -3,15 +3,10 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.io.File;
 public class Horspool {
-	//commandline commands:
-	//Change file from command line: --file <filename>
-	//Test; show characters and index: --t
-	//Show shift table: --table
-	
 	/*
 	 * Size is the amount of characters that will be in the shift table; opted for all characters that can be printed, as the indexes are found through ascii integers addition and subtraction.
 	 * The main method holds code that are more "life improvements," ease of testing, change files from commandline (no need to re-compile), show shift table, if chosen to able to search whatever string you want by typing the
-	 * string right next to java HM <string>, else it will default to the first string of the file. While performing IO, the code will check for spaces as to not add any unessicary spaces etc.
+	 * string right next to java Horspool <string>, else it will default to the first string of the file. While performing IO, the code will check for spaces as to not add any unessicary spaces etc.
 	 */
 	static final int size = 95;
 	static String str = "";
@@ -64,16 +59,8 @@ public class Horspool {
 			}
 		}
 
-
-
 		Scanner input = new Scanner(file);
-		/*
-		if(args.length > 0 && !(args[0].equals("--t")) && !(args[0].equals("--file")) && !(args[0].equals("--table"))){
-			str = args[0];
-		} else{
-			str = input.next();
-		}
-		*/
+
 		System.out.print("Desired string to be searched\n  >> ");
 		str = (new Scanner(System.in)).next();
 		sen = input.next();
@@ -110,16 +97,6 @@ public class Horspool {
 		else
 			System.out.printf("%d - %d\n", ind, (ind+(m-1)));
 		System.out.printf("Comparisons: %d\n\nTime(ns): %d\n", comparisons, start);
-		/* This was used for data automation
-		switch(command){
-			case 1://time
-				return start;
-			case 2://comparisons
-				return (new Integer(comparisons)).longValue();
-			case 3:
-				return (new Integer(ind)).longValue();
-		}	
-		return start;//*/
 	}
 	
 	/*
@@ -151,7 +128,7 @@ public class Horspool {
 	}
 	
 	/*
-	 * Invoked by the '--t' command, testing() will take the block of text that was just read, 'sen', and store every character into a char[] and print and format all chatacters and associated indexes.
+	 * Invoked by the '--index' command, testing() will take the block of text that was just read, 'sen', and store every character into a char[] and print and format all chatacters and associated indexes.
 	 * There is also a <k, n>, this is to show what indexes are displayed in the row, to make it easier to find the index.
 	 * The whole "WWWWWWWWW" is for just making it easier to identify where the pattern was found at, just by following the line in the index's row.
 	 */
@@ -189,7 +166,7 @@ public class Horspool {
 	}
 	
 	/*
-	 * pst stands for Print Shift Table, this is displayed when the '--table' argument is provided when executing the program
+	 * pst stands for Print Shift Table, this is displayed when the '--shift' argument is provided when executing the program
 	 */
 	private static void pst(){
 		System.out.print("Shift Table:\n");
