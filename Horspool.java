@@ -20,7 +20,7 @@ public class Horspool {
 	public static File file;
 	public static void main(String[] args) throws IOException{
 		if (args.length == 0) {
-			System.out.println("Usage => java HM [--f <FILEPATH>] [--t] [--table]\n\tHM.java: error: the following arguments are required: --file <FILEPATH>\n\tTry using the testing .txt files or using '--h' for help");
+			System.out.println("Usage => java Horspool [--f <FILEPATH>] [--index] [--shift]\n\tHM.java: error: the following arguments are required: --file <FILEPATH>\n\tTry '--h' for help");
 			System.exit(0);
 		}
 		String sen = "", hold = "";
@@ -34,11 +34,18 @@ public class Horspool {
 		if(args.length > 0){
 			for(int i = args.length-1; i >= 0; i--){
 				if(args[i].equals("--h")){
-					System.out.println("");
+					System.out.println("Usage => java Horspool [--f <FILEPATH>] [--index] [--shift]");
+					System.out.printf("\nHorpool: A CLI program that searches for a user-specified stirng in a text file.\n\n");
+					System.out.printf("requred areguments:\n  %-21s%s\n","--f <FILEPATH>","One arguemnt providing a .txt file to be searched through.\n");
+					System.out.println("optional arguments:");
+					System.out.printf("  %-21s%s\n","--index","This argument will show the contents of the text file in it's entirety, as well as assigning the index's of each character and 'underlining' the location/index of the found string.");
+					System.out.printf("  %-21s%s\n","--shift","This argument will present the shift table, and the index shifts assigned to each character.");
 					System.exit(0);
 				}
-				if(args[i].equals("--t"))
+				//*	
+				if(args[i].equals("--index"))
 					test = true;
+				//*/
 				if(args[i].equals("--f")){
 					if(i+1 < args.length){
 						try{
@@ -48,11 +55,11 @@ public class Horspool {
 							System.exit(0);
 						}
 					} else {
-						System.out.println("Usage => java HM [--f <FILEPATH>] [--t] [--table]\n\tHM.java: error: the following arguments are required: --file <FILEPATH>\n\tTry using the testing .txt files or using '--h' for help");
+						System.out.println("Usage => java Horspool [--f <FILEPATH>] [--index] [--shift]\n\tHM.java: error: the following arguments are required: --file <FILEPATH>\n\tTry using the testing .txt files or using '--h' for help");
 						System.exit(0);
 					}
 				}
-				if(args[i].equals("--table"))
+				if(args[i].equals("--shift"))
 					tab = true;
 			}
 		}
